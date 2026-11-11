@@ -31,7 +31,7 @@ out vec4 outColor;
 
 void main() {
     outColor = v_color;
-    //outColor = vec4(1, 0, 1, 1);
+    //outColor = vec4(0.3,0.22, 0.65, 1);
 }
 `;
 
@@ -72,9 +72,13 @@ function generateData(): twgl.Arrays {
             // Two components for the coordinates in X and Y
             numComponents: 2,
             data: new Float32Array([
-                 0.0,   0.7,
-                 0.5,  -0.7,
-                -0.5,  -0.7,
+                 0.0,   0.4,
+                 0.9,  0.2,
+                0.0,  -0.5,
+
+                -0.5, -0.9,
+                -0.6, 0.5,
+                0.1, 0.8,
             ]),
         },
         a_color: {
@@ -90,8 +94,12 @@ function generateData(): twgl.Arrays {
             */
             // To pass integer values, the type must be specified
             data: new Uint8Array([
-                255, 0, 0, 255,
-                0, 255, 0, 255,
+                200, 255, 200, 255,
+                200, 255, 200, 255,
+                200, 200, 255, 255,
+
+                200, 200, 255, 255,
+                200, 200, 255, 255,
                 0, 0, 255, 255,
             ]),
         },
