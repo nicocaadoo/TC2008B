@@ -33,11 +33,7 @@ out vec4 outColor;
 
 void main() {
     outColor = v_color;
-<<<<<<< HEAD
-    //outColor = vec4(0.3,0.22, 0.65, 1);
-=======
     //outColor = vec4(0, 1, 0, 1);
->>>>>>> 7c1a3d08b6b86bc872752b0d5cdc0bb82531d1fb
 }
 `;
 
