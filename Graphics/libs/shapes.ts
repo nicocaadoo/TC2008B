@@ -106,7 +106,7 @@ function smiley(radius: number) : twgl.Arrays {
 
     indexData.push(0, 2, 1);
     */
-    const yellow = [0.9, 0.8, 0.7, 1];
+    const skin = [0.6, 0.5, 0.4, 1];
     const red  = [0.9, 0.1, 0.1, 1];
     const white  = [1, 1, 1, 1];
     const black  = [0.1, 0.1, 0.1, 1];
@@ -132,7 +132,7 @@ function smiley(radius: number) : twgl.Arrays {
 
     
 
-    disc(0, 0, radius, yellow);                                          // head
+    disc(0, 0, radius, skin);                                          // head
     disc(-0.35 * radius, 0.3 * radius, 0.12 * radius, white, 16);       // left eye
     disc(-0.35 * radius, 0.3 * radius, 0.12 * radius /1.3, red, 16);       // left eye
     disc(-0.35 * radius, 0.3 * radius, 0.12 * radius /2.5, black, 16);       // left eye
