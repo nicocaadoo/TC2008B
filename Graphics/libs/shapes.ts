@@ -106,8 +106,10 @@ function smiley(radius: number) : twgl.Arrays {
 
     indexData.push(0, 2, 1);
     */
-    const yellow = [0.9, 0.8, 0.0, 1];
-    const black  = [0.0, 0.0, 0.0, 1];
+    const yellow = [0.9, 0.8, 0.7, 1];
+    const red  = [0.9, 0.1, 0.1, 1];
+    const white  = [1, 1, 1, 1];
+    const black  = [0.1, 0.1, 0.1, 1];
 
     const addVertex = (x: number, y: number, color: number[]): number => {
         positionData.push(x, y);
@@ -128,29 +130,19 @@ function smiley(radius: number) : twgl.Arrays {
         }
     };
 
-    // Curved band (the mouth): inner and outer arc, joined as quads
-    const arc = (rIn: number, rOut: number, start: number, end: number,
-                 color: number[], n = 20) => {
-        const first = positionData.length / 2;
-        for (let i = 0; i <= n; i++) {
-            const angle = start + ((end - start) * i) / n;
-            addVertex(rIn  * Math.cos(angle), rIn  * Math.sin(angle), color);
-            addVertex(rOut * Math.cos(angle), rOut * Math.sin(angle), color);
-        }
-        for (let i = 0; i < n; i++) {
-            const a = first + 2 * i;   // inner, current
-            const b = a + 1;           // outer, current
-            const c = a + 2;           // inner, next
-            const d = a + 3;           // outer, next
-            indexData.push(a, b, d,  a, d, c);
-        }
-    };
+    
 
     disc(0, 0, radius, yellow);                                          // head
-    disc(-0.35 * radius, -0.3 * radius, 0.12 * radius, black, 16);       // left eye
-    disc( 0.35 * radius, -0.3 * radius, 0.12 * radius, black, 16);       // right eye
-    arc(0.5 * radius, 0.6 * radius, 0.2 * Math.PI, 0.8 * Math.PI, black); // mouth
+    disc(-0.35 * radius, 0.3 * radius, 0.12 * radius, white, 16);       // left eye
+    disc(-0.35 * radius, 0.3 * radius, 0.12 * radius /1.3, red, 16);       // left eye
+    disc(-0.35 * radius, 0.3 * radius, 0.12 * radius /2.5, black, 16);       // left eye
+    disc( 0.35 * radius, 0.3 * radius, 0.12 * radius, white, 16);       // right eye
+    disc( 0.35 * radius, 0.3 * radius, 0.12 * radius / 1.3, red, 16);       // right eye
+    disc( 0.35 * radius, 0.3 * radius, 0.12 * radius / 2.5, black, 16);       // right eye
     
+    disc( 0 * radius, -0.5 * radius, 0.12 * radius*2, red, 16);       // Mouth
+    
+
     // Build the final object with the arrays for positions, colors, and indices
     const arrays: twgl.Arrays = {
         a_position: { numComponents: 2, data: positionData },
